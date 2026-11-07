@@ -71,7 +71,9 @@ CI (`.github/workflows/release.yml`, semantic-release) is present but disabled u
 set. Until then, releases are cut by hand:
 
 1. `./gradlew generatePatchesList`
-2. Update `patches-bundle.json` `version` + `download_url`, and the version in `gradle.properties`.
+2. Update `patches-bundle.json`: `version`, `download_url`, and `created_at` (format
+   `YYYY-MM-DDTHH:MM:SS`, UTC, **no trailing `Z`** — Morphe parses it as a local date-time and a
+   `Z` makes the whole source fail to load). Also bump the version in `gradle.properties`.
 3. Commit, tag `vX.Y.Z`, push.
 4. Create a GitHub release `vX.Y.Z` and attach `patches/build/libs/patches-X.Y.Z.mpp`.
 
