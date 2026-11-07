@@ -11,7 +11,8 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import dev.aayy.bwpatches.shared.Constants.COMPATIBILITY_BITWARDEN
+import dev.aayy.bwpatches.shared.Constants.COMPATIBILITY_BITWARDEN_FDROID
+import dev.aayy.bwpatches.shared.Constants.COMPATIBILITY_BITWARDEN_PLAY
 
 private const val EXTENSION_CLASS = "Ldev/aayy/bwpatches/extension/PasskeyUv;"
 
@@ -38,7 +39,7 @@ val noScreenLockPasskeyPatch = patch(
         "password, or biometric lock are unchanged.",
     default = true,
 ) {
-    compatibleWith(COMPATIBILITY_BITWARDEN)
+    compatibleWith(COMPATIBILITY_BITWARDEN_PLAY, COMPATIBILITY_BITWARDEN_FDROID)
 
     extendWith("extensions/extension.mpe")
 

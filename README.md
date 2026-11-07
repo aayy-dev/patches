@@ -36,13 +36,15 @@ than silently misbehaving.
 
 ### Which base APK?
 
-- **Play Store build** (from APKMirror): keeps Bitwarden's native push, so vault changes sync
-  almost instantly with no extra patch. Recommended.
-- **F-Droid build** (from Bitwarden's GitHub releases): no push, so sync is periodic/manual. A
-  future off-by-default live-sync patch will target this case.
+**Use the Play Store build** (from APKMirror — distributed as a split bundle, which Morphe merges
+before patching). It keeps Bitwarden's native push, so vault changes sync almost instantly with no
+extra patch. Patching + re-signing does **not** break push (FCM delivery depends on the package name
+and embedded Firebase config, not the signing certificate).
 
-Patching + re-signing does **not** break push on the Play build (FCM delivery depends on the
-package name and embedded Firebase config, not the signing certificate).
+The F-Droid build (single APK from Bitwarden's GitHub releases) also works, but it has no push, so
+sync is periodic/manual. There is deliberately **no live-sync patch**: on the obfuscated app the push
+path is stripped and the networking is unreachable from an extension, so a reliable live-sync patch
+isn't feasible — the Play build's native push is the supported way to get instant sync.
 
 ## Sideloading a bundle without the repo
 

@@ -12,6 +12,31 @@
           "packageName": "com.x8bit.bitwarden",
           "name": "Bitwarden",
           "description": null,
+          "apkFileType": "APKM",
+          "appIconColor": "#175DDC",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2026.11.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        },
+        {
+          "packageName": "com.x8bit.bitwarden",
+          "name": "Bitwarden",
+          "description": null,
           "apkFileType": "APK",
           "appIconColor": "#175DDC",
           "signatures": null,
