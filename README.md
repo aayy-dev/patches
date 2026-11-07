@@ -54,7 +54,7 @@ You can also test a locally built `.mpp` without adding the source:
 
 ## Development
 
-- Build the bundle: `./gradlew buildAndroid` (JDK 21). Needs read access to Morphe's GitHub
+- Build the bundle: `./gradlew buildAndroid` (JDK 21). **Requires a `local.properties` with `sdk.dir=/path/to/Android/sdk`** — without it the build silently ships a bundle with no `classes.dex`, which Morphe Manager then loads as **0 patches** (the Desktop CLI still works, so it's easy to miss). Confirm the output `.mpp` contains `classes.dex` (`unzip -l patches/build/libs/patches-*.mpp | grep dex`). Needs read access to Morphe's GitHub
   Packages — set `gpr.user` / `gpr.key` (a GitHub PAT with `read:packages`) in a local, gitignored
   `gradle.properties`. Output: `patches/build/libs/patches-*.mpp`.
 - Apply headlessly for testing: use the Morphe Desktop CLI jar (JDK 26+):
