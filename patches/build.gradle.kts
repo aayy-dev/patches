@@ -2,9 +2,9 @@ group = "dev.aayy.bwpatches"
 
 patches {
     about {
-        name = "Aayy Bitwarden Patches"
-        description = "Personal Bitwarden patches (no-screen-lock passkey)"
-        source = "git@github.com:aayy-dev/bw-morphe-patches.git"
+        name = "Aayy Patches"
+        description = "Personal patches for use with Morphe"
+        source = "git@github.com:aayy-dev/patches.git"
         author = "aayy-dev"
         contact = "na"
         website = "na"

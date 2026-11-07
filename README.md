@@ -1,13 +1,14 @@
-# Aayy Bitwarden Patches (Morphe)
+# Aayy Patches
 
-Personal [Morphe](https://morphe.software) patches for the official Bitwarden Android app. Morphe
-patches the official APK **on the device** (ReVanced-style), so there is no custom fork to install
-and no build server to run — you patch the real Bitwarden release on your phone.
+Personal patches for use with [Morphe](https://morphe.software). Morphe patches an app's official APK
+**on the device** (ReVanced-style), so there is no custom fork to install and no build server to run.
+This is an independent project, not affiliated with the Morphe project.
 
-> Private repo. Patch bundles are built against the official release and signed by Morphe with your
-> own on-device key.
+Patched APKs are signed by Morphe with your own on-device key.
 
 ## Patches
+
+### Bitwarden (`com.x8bit.bitwarden`)
 
 | Patch | Default | What it does |
 |-------|---------|--------------|
@@ -21,17 +22,17 @@ than silently misbehaving.
 ## Use it from Morphe Manager (on your phone)
 
 1. Install **Morphe Manager** from [morphe.software](https://morphe.software).
-2. Because this repo is **private**, give Morphe a GitHub token so it can read it:
-   **Settings → Advanced → GitHub token (PAT)** → paste a token with `repo` (read) scope.
-3. **Sources → + → Remote**, paste:
+2. On your phone, open
+   [morphe.software/add-source?github=aayy-dev/patches](https://morphe.software/add-source?github=aayy-dev/patches)
+   to add this source in one tap. Or add it by hand: **Sources → + → Remote**, paste:
    ```
-   github.com/aayy-dev/bw-morphe-patches
+   github.com/aayy-dev/patches
    ```
    Add it. Morphe reads `patches-bundle.json` from `main` and downloads the bundle.
-4. On the **Apps** screen choose Bitwarden (Expert mode → **Select other apps** if it isn't listed),
+3. On the **Apps** screen choose Bitwarden (Expert mode → **Select other apps** if it isn't listed),
    provide the official APK when asked (download the Bitwarden APK from APKMirror, or let Morphe's
    download helper fetch it), pick the patches, and **Patch**.
-5. Install the patched APK. Morphe signs it with your on-device key; keep that key backed up
+4. Install the patched APK. Morphe signs it with your on-device key; keep that key backed up
    (**Settings → Signing key → Export**) so future re-patches install as updates.
 
 ### Which base APK?

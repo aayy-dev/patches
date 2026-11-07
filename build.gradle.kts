@@ -1,1 +1,1 @@
-// Root build configuration for Aayy Bitwarden Patches
+// Root build configuration for Aayy Patches
