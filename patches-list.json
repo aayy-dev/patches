@@ -1,0 +1,40 @@
+{
+  "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "No screen lock passkey",
+      "description": "Skips the master password / PIN prompt for Bitwarden passkey sign-in and creation on a device with no secure lock screen. Devices with a PIN, pattern, password, or biometric lock are unchanged.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.x8bit.bitwarden",
+          "name": "Bitwarden",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#175DDC",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": true,
+              "minSdk": null,
+              "description": null
+            },
+            {
+              "version": "2026.11.0",
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
+}
