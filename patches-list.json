@@ -3,6 +3,43 @@
   "version": "1.5.0",
   "patches": [
     {
+      "name": "Keep shortcut icon shape",
+      "description": "Makes home screen shortcuts created in Native Alpha keep the shape of the picked icon image, including its transparent areas, instead of being forced into the launcher's icon shape.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.cylonid.nativealpha",
+          "name": "Native Alpha",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#904A43",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": [
+        {
+          "key": "iconSize",
+          "title": "Icon size (%)",
+          "description": "100 is the largest size that no launcher icon shape can clip. Higher makes the icon bigger, but round launcher shapes may then cut its corners. 50 to 150.",
+          "required": false,
+          "type": "kotlin.Int",
+          "default": 100,
+          "values": null
+        }
+      ]
+    },
+    {
       "name": "No screen lock passkey",
       "description": "Skips the master password / PIN prompt for Bitwarden passkey sign-in and creation on a device with no secure lock screen. Devices with a PIN, pattern, password, or biometric lock are unchanged.",
       "default": true,
@@ -32,6 +69,33 @@
           "description": null,
           "apkFileType": "APK",
           "appIconColor": "#175DDC",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": null,
+              "versionCodes": null,
+              "isExperimental": false,
+              "minSdk": null,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Open web apps from other apps",
+      "description": "Lets shortcut apps such as Shortcut Maker open a saved web app directly, so you can make the home screen shortcut there instead of in Native Alpha. Other apps can only open web apps you have already saved, and fingerprint-locked web apps still ask for your fingerprint.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "com.cylonid.nativealpha",
+          "name": "Native Alpha",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#904A43",
           "signatures": null,
           "formFactor": "MOBILE",
           "targets": [
