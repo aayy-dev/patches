@@ -65,6 +65,14 @@ You can also test a locally built `.mpp` without adding the source:
     -o patched.apk  path/to/official-bitwarden.apk
   ```
 
+### Gotchas when writing bytecode patches
+
+- Don't inject a `goto` that skips a method's try region or its leading register setup — it orphans
+  the catch handler and causes an ART `VerifyError` (the app crashes on launch). Prefer rewriting the
+  specific branch in place.
+- `replaceInstructions(index, smali)` replaces the *same number* of instructions it compiles; to swap
+  one instruction for several, use `removeInstruction(index)` then `addInstructions(index, ...)`.
+
 ### Cutting a release (manual)
 
 CI (`.github/workflows/release.yml`, semantic-release) is present but disabled until its secrets are
