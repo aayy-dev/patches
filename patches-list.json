@@ -1,6 +1,6 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "patches": [
     {
       "name": "No screen lock passkey",
@@ -62,8 +62,8 @@
       "options": []
     },
     {
-      "name": "Trust all browsers for passkeys",
-      "description": "Removes Bitwarden's privileged-browser signature check: a browser whose signing certificate isn't recognized (e.g. a Morphe-patched, re-signed browser) is accepted instead of being rejected with \"signature does not match\", with no prompt. This lowers a security check, so only use it on a device you control.",
+      "name": "Trust re-signed browsers for passkeys",
+      "description": "Lets you trust a Morphe-patched (re-signed) browser for passkeys. Normally Bitwarden hard-fails such a browser with \"signature does not match\" and offers no way to trust it; this routes it to the standard \"trust this browser?\" prompt instead, so you approve it once and it's remembered. Browsers whose signature already matches are unaffected.",
       "default": true,
       "category": null,
       "compatiblePackages": [
