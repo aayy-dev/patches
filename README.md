@@ -70,7 +70,9 @@ You can also test a locally built `.mpp` without adding the source:
 CI (`.github/workflows/release.yml`, semantic-release) is present but disabled until its secrets are
 set. Until then, releases are cut by hand:
 
-1. `./gradlew generatePatchesList`
+1. `./gradlew generatePatchesList && ./gradlew buildAndroid` — run `buildAndroid` **last**, because
+   `generatePatchesList` triggers a plain `build` that overwrites the `.mpp` with a non-dexed (JAR-only)
+   one. Then confirm `unzip -l patches/build/libs/patches-*.mpp | grep classes.dex` shows the dex.
 2. Update `patches-bundle.json`: `version`, `download_url`, and `created_at` (format
    `YYYY-MM-DDTHH:MM:SS`, UTC, **no trailing `Z`** — Morphe parses it as a local date-time and a
    `Z` makes the whole source fail to load). Also bump the version in `gradle.properties`.
