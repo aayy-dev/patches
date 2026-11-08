@@ -146,6 +146,15 @@ git tag -d vOLD                                           # local tag
    it is **not** a prerelease — Morphe uses `releases/latest`, which ignores prereleases).
 6. **Apply the one-release-tag rule above: delete all older releases + tags.**
 
+### After releasing: the "unnamed source" cache gotcha (not a bug)
+
+Right after you push a release, Morphe Manager may show the source as **"unnamed" with 0 patches**,
+or fail to read the metadata. This is almost always `raw.githubusercontent.com`'s **~5-minute CDN
+cache** serving the old/empty `patches-bundle.json`, not a real break. Confirm the live bundle is
+valid (`curl -s "https://raw.githubusercontent.com/aayy-dev/patches/main/patches-bundle.json?cb=$(date +%s)"`
+→ HTTP 200, correct `version`); if it is, just **wait a couple minutes and refresh the source again**
+in Morphe. Don't re-cut the release or change the manifest to chase this.
+
 How Morphe consumes this: it reads `raw.githubusercontent.com/aayy-dev/patches/main/patches-bundle.json`
 for the version/`download_url`, then downloads that `.mpp` release asset. A private repo would need a
 PAT detour; this repo is public, so the asset downloads directly.
