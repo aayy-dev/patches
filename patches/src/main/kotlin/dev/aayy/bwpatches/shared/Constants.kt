@@ -31,4 +31,15 @@ object Constants {
             AppTarget(version = null),
         ),
     )
+
+    /** Native Alpha, IzzyOnDroid / GitHub release build (single APK). */
+    val COMPATIBILITY_NATIVE_ALPHA = Compatibility(
+        name = "Native Alpha",
+        packageName = "com.cylonid.nativealpha",
+        apkFileType = ApkFileType.APK,
+        appIconColor = 0x904A43,
+        targets = listOf(
+            AppTarget(version = null),
+        ),
+    )
 }

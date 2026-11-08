@@ -19,6 +19,38 @@ resource, not by an obfuscated class name, so a Bitwarden update that only reshu
 names keeps working. If an update breaks it, the patch fails to apply (Morphe reports it) rather
 than silently misbehaving.
 
+### Native Alpha (`com.cylonid.nativealpha`)
+
+| Patch | Default | What it does |
+|-------|---------|--------------|
+| **Open web apps from other apps** | On | Lets shortcut apps such as Shortcut Maker open a saved web app directly, so the home screen shortcut (and its icon) can be made there instead of in Native Alpha. |
+
+Native Alpha's web app screen (`WebViewActivity`, plus the sandbox copies `__WebViewActivity_0`
+to `_7`) is private to the app, so only Native Alpha's own shortcuts can open it. The patch marks
+those screens as exported in the manifest. Nothing else changes: the screen only reads the web
+app's number from the intent, so other apps can open web apps you already saved but not load
+other sites through it, and fingerprint-locked web apps still ask for your fingerprint.
+
+Use the IzzyOnDroid or GitHub release APK. The patched app is signed with a different key, so
+uninstall the original first: use **Export settings & Web Apps** in Native Alpha before, and
+import the backup after.
+
+**Shortcut Maker intent** for a patched Native Alpha:
+
+| Field | Value |
+|-------|-------|
+| Package Name | `com.cylonid.nativealpha` |
+| Class Name | `com.cylonid.nativealpha.WebViewActivity`, or `com.cylonid.nativealpha.__WebViewActivity_<containerId>` for a sandboxed web app |
+| Extras | `webappID` = the web app's ID, type **Integer** (a String is ignored) |
+| Data | optional, e.g. `nativealpha://webapp/<ID>`; keeps each web app in its own window |
+
+To find a web app's ID (and `containerId`, which is `-1` when it isn't sandboxed), as root:
+
+```sh
+cat /data/data/com.cylonid.nativealpha/shared_prefs/WEBSITEDATA.xml \
+  | grep -o '&quot;\(ID\|title\|containerId\)&quot;:[^,]*'
+```
+
 ## Use it from Morphe Manager (on your phone)
 
 1. Install **Morphe Manager** from [morphe.software](https://morphe.software).
