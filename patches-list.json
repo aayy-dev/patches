@@ -1,44 +1,7 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "patches": [
-    {
-      "name": "Keep shortcut icon shape",
-      "description": "Makes home screen shortcuts created in Native Alpha keep the shape of the picked icon image, including its transparent areas, instead of being forced into the launcher's icon shape.",
-      "default": true,
-      "category": null,
-      "compatiblePackages": [
-        {
-          "packageName": "com.cylonid.nativealpha",
-          "name": "Native Alpha",
-          "description": null,
-          "apkFileType": "APK",
-          "appIconColor": "#904A43",
-          "signatures": null,
-          "formFactor": "MOBILE",
-          "targets": [
-            {
-              "version": null,
-              "versionCodes": null,
-              "isExperimental": false,
-              "minSdk": null,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": [
-        {
-          "key": "iconSize",
-          "title": "Icon size (%)",
-          "description": "100 is the largest size that no launcher icon shape can clip. Higher makes the icon bigger, but round launcher shapes may then cut its corners. 50 to 150.",
-          "required": false,
-          "type": "kotlin.Int",
-          "default": 100,
-          "values": null
-        }
-      ]
-    },
     {
       "name": "No screen lock passkey",
       "description": "Skips the master password / PIN prompt for Bitwarden passkey sign-in and creation on a device with no secure lock screen. Devices with a PIN, pattern, password, or biometric lock are unchanged.",
