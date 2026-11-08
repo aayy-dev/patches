@@ -24,12 +24,22 @@ than silently misbehaving.
 | Patch | Default | What it does |
 |-------|---------|--------------|
 | **Open web apps from other apps** | On | Lets shortcut apps such as Shortcut Maker open a saved web app directly, so the home screen shortcut (and its icon) can be made there instead of in Native Alpha. |
+| **Keep shortcut icon shape** | On | Shortcuts created in Native Alpha keep the shape of the picked icon image, including its transparent areas, instead of being forced into the launcher's icon shape. Option: **Icon size (%)**. |
 
-Native Alpha's web app screen (`WebViewActivity`, plus the sandbox copies `__WebViewActivity_0`
-to `_7`) is private to the app, so only Native Alpha's own shortcuts can open it. The patch marks
-those screens as exported in the manifest. Nothing else changes: the screen only reads the web
-app's number from the intent, so other apps can open web apps you already saved but not load
-other sites through it, and fingerprint-locked web apps still ask for your fingerprint.
+**Open web apps from other apps**: Native Alpha's web app screen (`WebViewActivity`, plus the
+sandbox copies `__WebViewActivity_0` to `_7`) is private to the app, so only Native Alpha's own
+shortcuts can open it. The patch marks those screens as exported in the manifest. Nothing else
+changes: the screen only reads the web app's number from the intent, so other apps can open web
+apps you already saved but not load other sites through it, and fingerprint-locked web apps still
+ask for your fingerprint.
+
+**Keep shortcut icon shape**: Native Alpha gives the launcher the picked image as a plain bitmap,
+which launchers treat as a legacy icon and force into their own shape. The patch turns it into an
+adaptive icon instead: the image is centred on a transparent canvas and scaled so every visible
+pixel stays inside the circle that all launcher shapes contain, so the launcher's mask only clips
+transparent padding. **Icon size** 100 (default) is the largest size no shape can clip; raise it
+for a bigger icon on square-ish launcher shapes (round shapes may then cut the corners). This also
+applies to fetched favicons, which then show as their own (usually square) shape, slightly smaller.
 
 Use the IzzyOnDroid or GitHub release APK. The patched app is signed with a different key, so
 uninstall the original first: use **Export settings & Web Apps** in Native Alpha before, and
